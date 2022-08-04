@@ -1,0 +1,6 @@
+---
+- include: install_hibench.yml
+  when: install_hibench
+
+- include: config_hibench.yml
+  when: config_hibench

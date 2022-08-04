@@ -6,12 +6,14 @@
    - vars/var_basic.yml
    - vars/var_master.yml
   vars:
-     add_user: true
-     generate_key: true
-     open_firewall: false
-     disable_firewall: false
-     install_hadoop: true
-     config_hadoop: true
+    add_user: true
+    generate_key: true
+    open_firewall: false
+    disable_firewall: false
+    install_hadoop: true
+    config_hadoop: true
+    install_hibench: true
+    config_hibench: true
   roles:
     - user
     - fetch_public_key
@@ -19,6 +21,7 @@
     - etc_hosts
     - java
     - hadoop
+    - hibench
 
 # Get Master Public Key
 - hosts: master 
@@ -44,6 +47,8 @@
     disable_firewall: false
     install_hadoop: true
     config_hadoop: true
+    install_hibench: true
+    config_hibench: true
   roles:
     - user
     - authorized

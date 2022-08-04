@@ -1,0 +1,20 @@
+---
+- name: Clone HiBench
+  ansible.builtin.git:
+    repo: https://github.com/Intel-bigdata/HiBench
+    dest: "{{ hibench_path }}"
+  become: true
+  become_user: "{{ user }}"
+
+- name: Install Hibench Build Dependencies
+  ansible.builtin.package:
+    name: 
+      - maven
+      - python2
+      - bc
+    state: present
+
+- name: Build HiBench
+  shell: chdir="{{ hibench_path }}" mvn -Phadoopbench -Dspark=2.4 -Dscala=2.11 clean package
+  become: true
+  become_user: "{{ user }}"

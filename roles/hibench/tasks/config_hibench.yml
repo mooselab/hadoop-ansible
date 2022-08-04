@@ -1,0 +1,3 @@
+---
+- name: Copy HiBench Hadoop Conf
+  template: src=hadoop.conf dest={{ hibench_path }}/conf/hadoop.conf mode=644 owner={{ user }} group = {{ group }}

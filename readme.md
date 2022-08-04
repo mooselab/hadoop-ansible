@@ -1,6 +1,6 @@
-# Ansible Scripts for Deploying Multi-Cluster Hadoop
+# Ansible Scripts for Deploying Multi-Cluster Hadoop and HiBench
 
-These Ansible scripts install Multi-Clustered Hadoop setups.  
+These Ansible scripts install Multi-Clustered Hadoop setups and Hibench.  
 
 Currently only Debian based systems are supported.
 
@@ -10,6 +10,7 @@ The software version matrix which will be installed is as follows:
 |----------|---------|
 | Hadoop   | 2.10.2  |
 | Java     | 8       |
+| Hibench  | @master |
 
 ### Quick Installation
 1. Edit the `hosts` file in the root directory:
