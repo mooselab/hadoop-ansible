@@ -6,34 +6,31 @@ Currently only Debian based systems are supported.
 
 The software version matrix which will be installed is as follows:
 
-|----------|---------|
 | Software | Version |
 |----------|---------|
 | Hadoop   | 2.10.2  |
-|----------|---------|
 | Java     | 8       |
-|----------|---------|
 
 ### Quick Installation
 1. Edit the `hosts` file in the root directory:
-```conf
-# [group-name] => master or workers
-# <public-ip-address>   hostname=<arbitrary-hostname> internal_ip=<internal-ip>
-# 
-# Example:
-# [master]
-# x.x.x.x       hostname=node-master    internal_ip=10.0.0.x
-# [workers]
-# x.x.x.x       hostname=node1          internal_ip=10.0.0.x
-# x.x.x.x       hostname=node2          internal_ip=10.0.0.x
-```
+    ```conf
+    [group-name] => master or workers
+    <public-ip-address>   hostname=<arbitrary-hostname> internal_ip=<internal-ip>
+
+    Example:
+    [master]
+    x.x.x.x       hostname=node-master    internal_ip=10.0.0.x
+    [workers]
+    x.x.x.x       hostname=node1          internal_ip=10.0.0.x
+    x.x.x.x       hostname=node2          internal_ip=10.0.0.x
+    ```
 
 Make sure that you can SSH into these VMs
 
 2. Run the playbook
-```bash
-ansible-playbook main.yml
-```
+    ```bash
+    ansible-playbook main.yml
+    ```
 
 ### Notes
 - These scripts will deploy Multi-Cluster Hadoop on VMs
@@ -42,6 +39,6 @@ ansible-playbook main.yml
 
 ### Tips
 - In order to prevent leaking hosts, order git to consider it always updated:
-```bash
-git update-index --skip-worktree hosts
-```
+    ```bash
+    git update-index --skip-worktree hosts
+    ```
