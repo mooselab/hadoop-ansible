@@ -1,0 +1,40 @@
+---
+- name: Update and upgrade apt packages
+  apt:
+    upgrade: yes
+    update_cache: yes
+    cache_valid_time: 86400
+    
+- name: Install OpenJdk.
+  apt: name={{ item }} state=present
+  with_items: "{{ java_packages }}"
+
+- name: Copy Java Home Script
+  template: src=java_home.sh dest=/etc/profile.d
+
+- name: Set Java Home Script
+  shell: . /etc/profile.d/java_home.sh
+
+- name: Set JAVA_HOME in Bashrc
+  lineinfile:
+    dest: "/home/{{ user }}/.bashrc"
+    regexp: "^export JAVA_HOME=.*$"
+    line: "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
+
+- name: Set HADOOP_HOME in Bashrc
+  lineinfile:
+    dest: "/home/{{ user }}/.bashrc"
+    regexp: "^export HADOOP_HOME=.*$"
+    line: "export HADOOP_HOME=/home/hadoop/hadoop"
+
+- name: Set YARN_HOME in Bashrc
+  lineinfile:
+    dest: "/home/{{ user }}/.bashrc"
+    regexp: "^export YARN_HOME=.*$"
+    line: "export YARN_HOME=$HADOOP_HOME"
+
+- name: Set PATH
+  lineinfile:
+    dest: "/home/{{ user }}/.bashrc"
+    regexp: "^export PATH=.*$"
+    line: "export PATH=${PATH}:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin"

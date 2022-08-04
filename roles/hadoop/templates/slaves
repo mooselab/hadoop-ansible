@@ -1,0 +1,3 @@
+{% for item in groups.workers %}
+{{ hostvars[item].hostname }}
+{% endfor %}

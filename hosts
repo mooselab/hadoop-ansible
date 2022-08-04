@@ -1,0 +1,12 @@
+# Edit this file by following the given format:
+# =============================================
+#
+# [group-name] => master or workers
+# <public-ip-address>   hostname=<arbitrary-hostname> internal_ip=<internal-ip>
+# 
+# Example:
+# [master]
+# x.x.x.x       hostname=node-master    internal_ip=10.0.0.x
+# [workers]
+# x.x.x.x       hostname=node1          internal_ip=10.0.0.x
+# x.x.x.x       hostname=node2          internal_ip=10.0.0.x

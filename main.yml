@@ -1,0 +1,52 @@
+# Configure Master Node
+- hosts: master 
+  remote_user: root
+  vars_files:
+   - vars/user.yml
+   - vars/var_basic.yml
+   - vars/var_master.yml
+  vars:
+     add_user: true
+     generate_key: true
+     open_firewall: false
+     disable_firewall: false
+     install_hadoop: true
+     config_hadoop: true
+  roles:
+    - user
+    - fetch_public_key
+    - authorized
+    - etc_hosts
+    - java
+    - hadoop
+
+# Get Master Public Key
+- hosts: master 
+  remote_user: root
+  vars_files:
+   - vars/user.yml
+   - vars/var_basic.yml
+   - vars/var_workers.yml
+  roles:
+    - fetch_public_key
+
+# Configure Worker Nodes
+- hosts: workers 
+  remote_user: root
+  vars_files:
+   - vars/user.yml
+   - vars/var_basic.yml
+   - vars/var_workers.yml
+  vars:
+    add_user: true
+    generate_key: false
+    open_firewall: false
+    disable_firewall: false
+    install_hadoop: true
+    config_hadoop: true
+  roles:
+    - user
+    - authorized
+    - etc_hosts
+    - java
+    - hadoop

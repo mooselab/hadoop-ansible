@@ -1,0 +1,4 @@
+---
+master_ip: "{{ ansible_host }}"
+master_hostname: "{{ hostvars[groups.master[0]].hostname }}"
+

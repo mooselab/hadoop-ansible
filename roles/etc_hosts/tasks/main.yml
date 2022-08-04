@@ -1,0 +1,8 @@
+- name: Add internal IP address of all hosts to all hosts
+  lineinfile:
+    dest: /etc/hosts
+    regexp: '.*{{ item }}$'
+    line: "{{ hostvars[item].internal_ip }} {{ hostvars[item].hostname }}"
+    state: present
+  when: hostvars[item].internal_ip is defined
+  with_items: "{{ groups.all }}"

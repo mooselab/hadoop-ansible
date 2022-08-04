@@ -1,0 +1,4 @@
+---
+master_ip: "{{ groups.master[0] }}"
+master_hostname: "{{ hostvars[groups.master[0]].hostname }}"
+

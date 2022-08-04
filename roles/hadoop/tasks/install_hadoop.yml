@@ -1,0 +1,20 @@
+---
+- name: Download Hadoop
+  shell: "wget -O {{ download_path }}/hadoop-{{ hadoop_version }}.tar.gz https://archive.apache.org/dist/hadoop/common/hadoop-{{ hadoop_version }}/hadoop-{{ hadoop_version }}.tar.gz"
+  become: true
+  become_user: "{{ user }}"
+
+- name: Unzip Hadoop
+  shell: "tar zxf {{ download_path }}/hadoop-{{hadoop_version}}.tar.gz -C {{ hadoop_path }}"
+  become: true
+  become_user: "{{ user }}"
+
+- name: Remove Hadoop Directory if already created
+  shell: "rm -rf {{ hadoop_path }}/hadoop"
+  become: true
+  become_user: "{{ user }}"
+
+- name: Rename Hadoop Dir
+  shell: "mv -f {{ hadoop_path }}/hadoop-{{ hadoop_version }} {{ hadoop_path }}/hadoop"
+  become: true
+  become_user: "{{ user }}"
