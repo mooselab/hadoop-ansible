@@ -16,7 +16,6 @@ hadoop_config_path: "/home/hadoop/hadoop/etc/hadoop"
 hadoop_tmp: "/home/hadoop/tmp"
 hadoop_dfs_name: "/home/hadoop/dfs/nameNode"
 hadoop_dfs_data: "/home/hadoop/dfs/dataNode"
-hadoop_log_path: "/home/hadoop/hadoop_logs"
 
 # HiBench
 hibench_path: "/home/hadoop/hibench"
@@ -25,8 +24,6 @@ hadoop_create_path:
   - "{{ hadoop_tmp }}"
   - "{{ hadoop_dfs_name }}"
   - "{{ hadoop_dfs_data }}"
-  - "{{ hadoop_log_path }}"
-
 
 # hadoop configration 
 hdfs_port: 9000
