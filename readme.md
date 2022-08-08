@@ -26,9 +26,13 @@ The software version matrix which will be installed is as follows:
     x.x.x.x       hostname=node2          internal_ip=10.0.0.x
     ```
 
-Make sure that you can SSH into these VMs
+Make sure that you can SSH into these VMs as the root user
 
-2. Run the playbook
+2. (Optional) You can add your SSH public key in `vars/var_basic.yml` under
+   `user_ssh_key`. This key will be copied to user "hadoop"'s authorized keys
+   on all nodes.
+
+3. Run the playbook
     ```bash
     ansible-playbook main.yml
     ```

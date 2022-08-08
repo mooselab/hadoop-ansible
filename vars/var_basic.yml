@@ -1,4 +1,7 @@
 ---
+# SSH (for you to ssh into as the user "hadoop")
+user_ssh_key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINMm/9RWSPMxyeMHglw6cyZBgtuke+7l5wc9dXmQkiii mail@wantguns.dev"
+
 # java version
 jvm_home: "/usr/lib/jvm"
 java_packages:

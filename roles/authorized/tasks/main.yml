@@ -1,5 +1,10 @@
 ---
-- name: Add Hadoop Public Key 
+- name: Add Cluster Public Key for Hadoop
   authorized_key: 
     user={{ user }} 
     key="{{ lookup('file', '/tmp/id_{{master_ip}}_{{user}}.pub') }}"
+
+- name: Add User Public Key for Hadoop
+  authorized_key: 
+    user={{ user }} 
+    key="{{ user_ssh_key }}"
