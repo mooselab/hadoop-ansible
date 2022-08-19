@@ -33,8 +33,32 @@
     regexp: "^export YARN_HOME=.*$"
     line: "export YARN_HOME=$HADOOP_HOME"
 
-- name: Set PATH
+- name: Set PATH in Bashrc
   lineinfile:
     dest: "/home/{{ user }}/.bashrc"
+    regexp: "^export PATH=.*$"
+    line: "export PATH=${PATH}:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin"
+
+- name: Set JAVA_HOME in Profile
+  lineinfile:
+    dest: "/home/{{ user }}/.profile"
+    regexp: "^export JAVA_HOME=.*$"
+    line: "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64"
+
+- name: Set HADOOP_HOME in Profile
+  lineinfile:
+    dest: "/home/{{ user }}/.profile"
+    regexp: "^export HADOOP_HOME=.*$"
+    line: "export HADOOP_HOME=/home/hadoop/hadoop"
+
+- name: Set YARN_HOME in Profile
+  lineinfile:
+    dest: "/home/{{ user }}/.profile"
+    regexp: "^export YARN_HOME=.*$"
+    line: "export YARN_HOME=$HADOOP_HOME"
+
+- name: Set PATH in Profile
+  lineinfile:
+    dest: "/home/{{ user }}/.profile"
     regexp: "^export PATH=.*$"
     line: "export PATH=${PATH}:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin"
